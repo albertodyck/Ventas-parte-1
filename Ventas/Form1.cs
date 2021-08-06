@@ -30,7 +30,7 @@ namespace Ventas
                 {
                     Global.TipoBaseDeDatos = SeleccionBaseDeDatos.TipoBaseDeDatos.SQL;
                     Global.FuenteDeDatos = "Server=localhost;Database=VENTAS_DB;Trusted_Connection=True;";
-                    MessageBox.Show("Se conecto a sql");
+                    //MessageBox.Show("Se conecto a sql");
                 }
                 else
                 {
