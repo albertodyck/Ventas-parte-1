@@ -46,12 +46,14 @@ namespace Ventas
             this.buttonUserAdmin = new System.Windows.Forms.Button();
             this.buttonPuntoVenta = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.labelBD = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.labelBD);
             this.panel1.Controls.Add(this.labelCajero);
             this.panel1.Controls.Add(this.labelFechaHora);
             this.panel1.Location = new System.Drawing.Point(12, 218);
@@ -64,7 +66,7 @@ namespace Ventas
             this.labelCajero.AutoSize = true;
             this.labelCajero.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCajero.ForeColor = System.Drawing.Color.Blue;
-            this.labelCajero.Location = new System.Drawing.Point(3, 22);
+            this.labelCajero.Location = new System.Drawing.Point(3, 14);
             this.labelCajero.Name = "labelCajero";
             this.labelCajero.Size = new System.Drawing.Size(70, 16);
             this.labelCajero.TabIndex = 10;
@@ -76,7 +78,7 @@ namespace Ventas
             this.labelFechaHora.AutoSize = true;
             this.labelFechaHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelFechaHora.ForeColor = System.Drawing.Color.Blue;
-            this.labelFechaHora.Location = new System.Drawing.Point(3, 62);
+            this.labelFechaHora.Location = new System.Drawing.Point(3, 73);
             this.labelFechaHora.Name = "labelFechaHora";
             this.labelFechaHora.Size = new System.Drawing.Size(89, 16);
             this.labelFechaHora.TabIndex = 9;
@@ -206,6 +208,17 @@ namespace Ventas
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // labelBD
+            // 
+            this.labelBD.AutoSize = true;
+            this.labelBD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelBD.ForeColor = System.Drawing.Color.Blue;
+            this.labelBD.Location = new System.Drawing.Point(3, 47);
+            this.labelBD.Name = "labelBD";
+            this.labelBD.Size = new System.Drawing.Size(163, 16);
+            this.labelBD.TabIndex = 11;
+            this.labelBD.Text = "Base de datos en uso:";
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -246,5 +259,6 @@ namespace Ventas
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem categoriaDeProductosToolStripMenuItem;
+        private System.Windows.Forms.Label labelBD;
     }
 }
