@@ -44,7 +44,7 @@ namespace AccesoDatos
                     string strError = ex.Message;
                     if (strError.IndexOf("Microsoft.ACE.OLEDB.12.0") > -1)
                     {
-                        throw new Exception("El proveedor de acceso a datos no esta instalado Microsoft.ACE.OLEDB.12.0")
+                        throw new Exception("El proveedor de acceso a datos no esta instalado Microsoft.ACE.OLEDB.12.0");
                     }
                     throw new Exception(strError);
                 }
@@ -94,7 +94,7 @@ namespace AccesoDatos
                     {
                         if (!oleDbDataReader.IsDBNull(0))
                         {
-                            for (int i = 0; i < cuentaReader; i++)
+                            for (int i = 0; i <= cuentaReader; i++)
                             {
                                 dicRespuesta.Add(
                                     oleDbDataReader.GetName(i).ToString(),

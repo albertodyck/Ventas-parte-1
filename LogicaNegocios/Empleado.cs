@@ -40,9 +40,7 @@ namespace LogicaNegocios
                     query = $"SELECT Id, Nombre FROM [EMPLEADOS$] WHERE Nombre='{usuario}' AND Contrasena = '{contrasena}'";
                 }
 
-                
-
-                //se trae dos columnas de uin renglon en un reader y los coloca en un diccionario
+                //se trae dos columnas de un renglon en un reader y los coloca en un diccionario
                 Dictionary<string, object> dicEmpleado = baseDeDatos.Reader(query);
 
                 //Nueva validacion de empleado encontrado:

@@ -30,6 +30,7 @@ namespace Ventas
                 {
                     Global.TipoBaseDeDatos = SeleccionBaseDeDatos.TipoBaseDeDatos.SQL;
                     Global.FuenteDeDatos = "Server=localhost;Database=VENTAS_DB;Trusted_Connection=True;";
+                    MessageBox.Show("Se conecto a sql");
                 }
                 else
                 {
@@ -54,9 +55,9 @@ namespace Ventas
                 //    //vaciamos el contenido del usuario a una variable a fin de llamarlo en el menu
                 //    NombreUsuario = usuario;
 
-                //    this.Hide();
-                //    new Menu().ShowDialog();
-                //    this.Show();
+                this.Hide();
+                new Menu().ShowDialog();
+                this.Show();
 
                 //    //MessageBox.Show("Conexion Satisfactoria");
                 //}
