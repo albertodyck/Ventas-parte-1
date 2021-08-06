@@ -16,5 +16,10 @@ namespace Ventas
         public static SeleccionBaseDeDatos.TipoBaseDeDatos TipoBaseDeDatos { get; set; }
 
         public static string FuenteDeDatos {get; set; }
+
+        #region Producto
+
+
+        #endregion
     }
 }
