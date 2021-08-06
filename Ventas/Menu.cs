@@ -24,7 +24,7 @@ namespace Ventas
 
         private void Menu_Load(object sender, EventArgs e)
         {
-            labelCajero.Text = "Usuario:" + Form1.NombreUsuario;
+            labelCajero.Text = $"UsuarioId:'{Global.Usuarioid}' Nombre:'{Global.NombreUsuario}'";
         }
 
         private void labelCajero_Click(object sender, EventArgs e)

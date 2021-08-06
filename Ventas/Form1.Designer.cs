@@ -36,6 +36,7 @@ namespace Ventas
             this.pictureBoxKey = new System.Windows.Forms.PictureBox();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.textBoxUser = new System.Windows.Forms.TextBox();
+            this.cmbBaseDeDatos = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCashier)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxKey)).BeginInit();
             this.SuspendLayout();
@@ -110,11 +111,21 @@ namespace Ventas
             this.textBoxUser.Size = new System.Drawing.Size(100, 22);
             this.textBoxUser.TabIndex = 6;
             // 
+            // cmbBaseDeDatos
+            // 
+            this.cmbBaseDeDatos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbBaseDeDatos.FormattingEnabled = true;
+            this.cmbBaseDeDatos.Location = new System.Drawing.Point(31, 297);
+            this.cmbBaseDeDatos.Name = "cmbBaseDeDatos";
+            this.cmbBaseDeDatos.Size = new System.Drawing.Size(121, 21);
+            this.cmbBaseDeDatos.TabIndex = 8;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(500, 331);
+            this.Controls.Add(this.cmbBaseDeDatos);
             this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.textBoxUser);
             this.Controls.Add(this.pictureBoxCashier);
@@ -140,6 +151,7 @@ namespace Ventas
         private System.Windows.Forms.PictureBox pictureBoxCashier;
         private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.TextBox textBoxUser;
+        private System.Windows.Forms.ComboBox cmbBaseDeDatos;
     }
 }
 

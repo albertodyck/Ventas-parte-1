@@ -9,37 +9,69 @@ namespace LogicaNegocios
 {
     public class Empleado
     {
-        string connectionString;
-        public string NombreUsuario { get; set; }
+        //string connectionString;
+        public int Id { get; set; }
+        public string Nombre { get; set; }
 
-        public Empleado()
+        private readonly IBaseDeDatos baseDeDatos;
+
+        //public Empleado()
+        //{
+        //    connectionString = "Server=localhost;Database=VENTAS_DB;Trusted_Connection=True;";
+        //}
+
+        public Empleado(SeleccionBaseDeDatos.TipoBaseDeDatos tipoBaseDeDatos, string fuente)
         {
-            connectionString = "Server=localhost;Database=VENTAS_DB;Trusted_Connection=True;";
+            baseDeDatos = SeleccionBaseDeDatos.Seleccionar(tipoBaseDeDatos, fuente);
         }
 
-        public bool Login(string usuario, string contrasena)
+        public void Login(string usuario, string contrasena)
         {
             try
             {
-                SQL sql = new SQL(connectionString);
-
-                string query = $"SELECT COUNT(*) FROM EMPLEADOS WHERE Nombre='{usuario}' AND Contrasena = '{contrasena}'";
-
-                string ejecutar = sql.Scalar(query).ToString();
-
-                int encontrado = 0;
-
-                int.TryParse(ejecutar, out encontrado);
-                //login exitoso
-                if (encontrado > 0)
+                //SQL sql = new SQL(connectionString);
+                string query = "";
+                if (baseDeDatos is SQL)
                 {
-                    return true;
+                    query = $"SELECT Id, Nombre FROM EMPLEADOS WHERE Nombre='{usuario}' AND Contrasena = '{contrasena}'";
                 }
                 else
-                //no acceso
                 {
-                    return false;
+                    query = $"SELECT Id, Nombre FROM [EMPLEADOS$] WHERE Nombre='{usuario}' AND Contrasena = '{contrasena}'";
                 }
+
+                
+
+                //se trae dos columnas de uin renglon en un reader y los coloca en un diccionario
+                Dictionary<string, object> dicEmpleado = baseDeDatos.Reader(query);
+
+                //Nueva validacion de empleado encontrado:
+
+                if (dicEmpleado.Count < 1)
+                {
+                    throw new Exception("Usuario y/o contraseña incorrectos");
+                }
+
+                //Se trae el Id y lo convierte a entero si viene de excel, si viene de SQL ya es Int y lo guarda en usuarioId
+                int.TryParse(dicEmpleado["Id"].ToString(), out int usuarioId);
+
+                Id = usuarioId;
+
+                Nombre = dicEmpleado["Nombre"].ToString();
+
+
+                //int encontrado = 0;
+                //int.TryParse(ejecutar, out encontrado);
+                ////login exitoso
+                //if (encontrado > 0)
+                //{
+                //    return true;
+                //}
+                //else
+                ////no acceso
+                //{
+                //    return false;
+                //}
             }
             catch (Exception ex)
             {
