@@ -11,6 +11,9 @@ namespace AccesoDatos
     public class SQL : IBaseDeDatos
     {
         private readonly string connectionString;
+
+        public string ConnectionString => connectionString;
+
         public SQL(string connectionString)
         {
             if (string.IsNullOrWhiteSpace(connectionString))
@@ -25,7 +28,7 @@ namespace AccesoDatos
         public bool ProbarConexion()
         {
 
-            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            using (SqlConnection sqlConnection = new SqlConnection(ConnectionString))
             {
                 try
                 {
@@ -41,7 +44,7 @@ namespace AccesoDatos
 
         public object Scalar(string query)
         {
-            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            using (SqlConnection sqlConnection = new SqlConnection(ConnectionString))
             {
                 using (SqlCommand sqlCommand = new SqlCommand(query, sqlConnection))
                 {
@@ -71,7 +74,7 @@ namespace AccesoDatos
 
         public int NonQuery(string query)
         {
-            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            using (SqlConnection sqlConnection = new SqlConnection(ConnectionString))
             {
                 using (SqlCommand sqlCommand = new SqlCommand(query, sqlConnection))
                 {
@@ -101,7 +104,7 @@ namespace AccesoDatos
 
         public Dictionary<string, object> Reader(string query)
         {
-            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            using (SqlConnection sqlConnection = new SqlConnection(ConnectionString))
             {
                 using (SqlCommand sqlCommand = new SqlCommand(query, sqlConnection))
                 {
@@ -132,7 +135,7 @@ namespace AccesoDatos
 
         public DataTable ObtenerDataTable(string query)
         {
-            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            using (SqlConnection sqlConnection = new SqlConnection(ConnectionString))
             {
                 using (SqlCommand sqlCommand = new SqlCommand(query, sqlConnection))
                 {

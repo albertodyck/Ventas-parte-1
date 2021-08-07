@@ -12,8 +12,11 @@ namespace AccesoDatos
 {
     public class Excel : IBaseDeDatos
     {
+
         private readonly string connectionString;
         private readonly string archivo;
+
+        public string ConnectionString => connectionString;
 
         public Excel(string archivo)
         {

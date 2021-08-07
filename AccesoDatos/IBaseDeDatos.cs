@@ -13,6 +13,7 @@ namespace AccesoDatos
     //todos aquellos que implementan una interfaz son compatibles
     public interface IBaseDeDatos
     {
+        string ConnectionString { get; }
         bool ProbarConexion();
 
         object Scalar(string query);

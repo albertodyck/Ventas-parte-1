@@ -157,6 +157,10 @@ namespace Ventas
         //hace visibles la etiqueta
         private void buttonPagar_Click(object sender, EventArgs e)
         {
+            Venta venta = new Venta(Global.TipoBaseDeDatos, Global.FuenteDeDatos);
+
+            venta.GuardarVenta(venta);
+
             labelPago.Visible = true;
             textBoxPago.Visible = true;
             textBoxPago.Focus();
