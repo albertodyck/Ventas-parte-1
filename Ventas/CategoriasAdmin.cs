@@ -92,6 +92,27 @@ namespace Ventas
 
         private void dgvDatos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            //try
+            //{
+            //    int renglon = e.RowIndex;
+            //    if (renglon < 0)
+            //    {
+            //        throw new Exception("No hay registros");
+            //    }
+
+            //    txtId.Text = dgvDatos.Rows[renglon].Cells["Id"].Value.ToString();
+            //    txtCategoria.Text = dgvDatos.Rows[renglon].Cells["Categoria"].Value.ToString();
+            //    txtDescripcion.Text = dgvDatos.Rows[renglon].Cells["Descripcion"].Value.ToString();
+
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw new Exception(ex.Message);
+            //}
+        }
+
+        private void dgvDatos_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
             try
             {
                 int renglon = e.RowIndex;
@@ -206,5 +227,7 @@ namespace Ventas
                 throw new Exception(ex.Message);
             }
         }
+
+
     }
 }

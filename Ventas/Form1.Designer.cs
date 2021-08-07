@@ -110,6 +110,7 @@ namespace Ventas
             this.textBoxUser.Name = "textBoxUser";
             this.textBoxUser.Size = new System.Drawing.Size(100, 22);
             this.textBoxUser.TabIndex = 6;
+            this.textBoxUser.Text = "Jose Dyck";
             // 
             // cmbBaseDeDatos
             // 

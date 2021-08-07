@@ -112,24 +112,24 @@ namespace Ventas
 
         private void dgvDatos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
-            {
-                int renglon = e.RowIndex;
-                if (renglon < 0)
-                {
-                    throw new Exception("No hay registros");
-                }
+            //try
+            //{
+            //    int renglon = e.RowIndex;
+            //    if (renglon < 0)
+            //    {
+            //        throw new Exception("No hay registros");
+            //    }
 
-                txtId.Text = dgvDatos.Rows[renglon].Cells["Id"].Value.ToString();
-                txtDescripcion.Text = dgvDatos.Rows[renglon].Cells["Descripcion"].Value.ToString();
-                txtPrecioUnitario.Text = dgvDatos.Rows[renglon].Cells["PrecioUnitario"].Value.ToString();
-                txtCategoriaId.Text = dgvDatos.Rows[renglon].Cells["CategoriaId"].Value.ToString();
+            //    txtId.Text = dgvDatos.Rows[renglon].Cells["Id"].Value.ToString();
+            //    txtDescripcion.Text = dgvDatos.Rows[renglon].Cells["Descripcion"].Value.ToString();
+            //    txtPrecioUnitario.Text = dgvDatos.Rows[renglon].Cells["PrecioUnitario"].Value.ToString();
+            //    txtCategoriaId.Text = dgvDatos.Rows[renglon].Cells["CategoriaId"].Value.ToString();
 
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw new Exception(ex.Message);
+            //}
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
@@ -250,6 +250,39 @@ namespace Ventas
             txtCategoriaId.Text = Convert.ToString(cmbCategoria.SelectedValue);
         }
 
+        private void dgvDatos_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                int renglon = e.RowIndex;
+                if (renglon < 0)
+                {
+                    throw new Exception("No hay registros");
+                }
 
+                txtId.Text = dgvDatos.Rows[renglon].Cells["Id"].Value.ToString();
+                txtDescripcion.Text = dgvDatos.Rows[renglon].Cells["Descripcion"].Value.ToString();
+                txtPrecioUnitario.Text = dgvDatos.Rows[renglon].Cells["PrecioUnitario"].Value.ToString();
+                txtCategoriaId.Text = dgvDatos.Rows[renglon].Cells["CategoriaId"].Value.ToString();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        private void txtPrecioUnitario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar) || e.KeyChar == 8)//digitos o back space
+            {
+                e.Handled = false;
+
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

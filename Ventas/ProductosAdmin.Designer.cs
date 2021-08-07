@@ -101,6 +101,7 @@ namespace Ventas
             this.dgvDatos.Size = new System.Drawing.Size(453, 209);
             this.dgvDatos.TabIndex = 24;
             this.dgvDatos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellContentClick);
+            this.dgvDatos.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellContentDoubleClick);
             // 
             // lblContactos
             // 
@@ -158,6 +159,7 @@ namespace Ventas
             this.txtPrecioUnitario.Name = "txtPrecioUnitario";
             this.txtPrecioUnitario.Size = new System.Drawing.Size(258, 20);
             this.txtPrecioUnitario.TabIndex = 29;
+            this.txtPrecioUnitario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioUnitario_KeyPress);
             // 
             // lblCategoriaId
             // 

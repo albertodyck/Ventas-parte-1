@@ -59,7 +59,7 @@ namespace Ventas
                 {
                     afectados = cliente.NonQuery($"INSERT INTO [Clientes] " +
                     $"(Nombre) VALUES " +
-                    $"('{txtCliente.Text}'");
+                    $"('{txtCliente.Text}')");
                 }
                 else
                 {
@@ -176,12 +176,12 @@ namespace Ventas
 
                 if (Global.TipoBaseDeDatos.ToString() == "SQL")
                 {
-                    afectados = cliente.NonQuery($"DELETE FROM [Cliente] " +
+                    afectados = cliente.NonQuery($"DELETE FROM [Clientes] " +
                     $"WHERE Id = {txtId.Text}");
                 }
                 else
                 {
-                    afectados = cliente.NonQuery($"DELETE FROM [Cliente$] " +
+                    afectados = cliente.NonQuery($"DELETE FROM [Clientes$] " +
                     $"WHERE Id = {txtId.Text}");
                 }
 
@@ -207,21 +207,22 @@ namespace Ventas
 
         private void dgvDatos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
-            {
-                int renglon = e.RowIndex;
-                if (renglon < 0)
-                {
-                    throw new Exception("No hay registros");
-                }
+            //try
+            //{
+            //    int renglon = e.RowIndex;
+            //    if (renglon < 0)
+            //    {
+            //        throw new Exception("No hay registros");
+            //    }
 
-                txtId.Text = dgvDatos.Rows[renglon].Cells["Id"].Value.ToString();
-                txtCliente.Text = dgvDatos.Rows[renglon].Cells["Nombre"].Value.ToString();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            //    txtId.Text = dgvDatos.Rows[renglon].Cells["Id"].Value.ToString();
+            //    txtCliente.Text = dgvDatos.Rows[renglon].Cells["Nombre"].Value.ToString();
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw new Exception(ex.Message);
+            //}
         }
+
     }
 }

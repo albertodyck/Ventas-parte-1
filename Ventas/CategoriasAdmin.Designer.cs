@@ -96,6 +96,7 @@ namespace Ventas
             this.dgvDatos.Size = new System.Drawing.Size(453, 159);
             this.dgvDatos.TabIndex = 24;
             this.dgvDatos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellContentClick);
+            this.dgvDatos.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellContentDoubleClick);
             // 
             // lblContactos
             // 
