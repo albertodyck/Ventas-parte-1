@@ -52,6 +52,23 @@ namespace AccesoDatos
             }
         }
 
+        public object Scalar(SqlCommand sqlCommand, SqlTransaction sqlTransaction)
+        {
+            using (sqlCommand)
+            {
+                try
+                {
+                    sqlCommand.CommandType = CommandType.Text;
+                    sqlCommand.Transaction = sqlTransaction;
+                    return sqlCommand.ExecuteScalar();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+            }
+        }
+
         public int NonQuery(string query)
         {
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
@@ -61,6 +78,23 @@ namespace AccesoDatos
                     sqlCommand.CommandType = CommandType.Text;
                     sqlConnection.Open();
                     return sqlCommand.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public int NonQuery(SqlCommand sqlCommand, SqlTransaction sqlTransaction)
+        {
+            using (sqlCommand)
+            {
+                try
+                {
+                    sqlCommand.CommandType = CommandType.Text;
+                    sqlCommand.Transaction = sqlTransaction;
+                    return sqlCommand.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
                 }
             }
         }
@@ -116,5 +150,7 @@ namespace AccesoDatos
                 }
             }
         }
+
+
     }
 }

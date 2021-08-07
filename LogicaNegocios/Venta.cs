@@ -10,12 +10,15 @@ namespace LogicaNegocios
 {
     public class Venta
     {
+        public List<VentaConcepto> Conceptos { get; set; }
 
         private readonly IBaseDeDatos baseDeDatos;
 
         public Venta(SeleccionBaseDeDatos.TipoBaseDeDatos tipoBaseDeDatos, string fuente)
         {
             baseDeDatos = SeleccionBaseDeDatos.Seleccionar(tipoBaseDeDatos, fuente);
+
+            Conceptos = new List<VentaConcepto>();
         }
 
         public DataTable ObtenerProductos()
@@ -70,6 +73,21 @@ namespace LogicaNegocios
         }
 
         public int NonQuery(string query)
+        {
+            try
+            {
+                int resultado = baseDeDatos.NonQuery(query);
+
+                return resultado;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public int GuardarVenta(Venta venta)
         {
             try
             {

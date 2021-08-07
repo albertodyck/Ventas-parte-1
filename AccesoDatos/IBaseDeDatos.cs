@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,5 +22,10 @@ namespace AccesoDatos
         Dictionary<string, object> Reader(string query);
 
         DataTable ObtenerDataTable(string query);
+
+        object Scalar(SqlCommand sqlCommand, SqlTransaction sqlTransaction);
+
+        int NonQuery(SqlCommand sqlCommand, SqlTransaction sqlTransaction);
+
     }
 }

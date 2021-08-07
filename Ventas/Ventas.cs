@@ -15,8 +15,8 @@ namespace Ventas
     {
         float total = 0;
         float IVA = 0;
-        int Folio = 0;
-        DataTable Renglon = new DataTable();
+        //int Folio = 0;
+        //DataTable Renglon = new DataTable();
         float ImporteRengon = 0;
 
         public Ventas()
@@ -34,26 +34,26 @@ namespace Ventas
             labelCajero.Text = $"UsuarioId: {Global.Usuarioid} Nombre: {Global.NombreUsuario}";
             labelBD.Text = $"Esta usando {Global.TipoBaseDeDatos} como base de datos";
 
-            #region Folio
+            //#region Folio
 
-            //obtener el folio de la venta
-            Folio folio = new Folio(Global.TipoBaseDeDatos, Global.FuenteDeDatos);
+            ////obtener el folio de la venta
+            //Folio folio = new Folio(Global.TipoBaseDeDatos, Global.FuenteDeDatos);
 
-            try
-            {
-                int.TryParse(folio.Scalar().ToString(), out int CuentaContactos);
+            //try
+            //{
+            //    int.TryParse(folio.Scalar().ToString(), out int CuentaFolios);
 
-                Folio = CuentaContactos + 1;
+            //    Folio = CuentaFolios + 1;
 
-                lblFolio.Text = $"Folio: {Folio}";
-            }
-            catch (Exception)
-            {
+            //    lblFolio.Text = $"Folio: {Folio}";
+            //}
+            //catch (Exception)
+            //{
 
-                throw;
-            }
+            //    throw;
+            //}
 
-            #endregion
+            //#endregion
 
 
             Invisibles();
@@ -128,7 +128,11 @@ namespace Ventas
                 {
                     Producto producto = new Producto(Global.TipoBaseDeDatos, Global.FuenteDeDatos);
 
-                    Renglon = producto.ObtenerProducto(int.Parse(textBoxCodigo.Text));
+                    DataRow Renglon = producto.ObtenerProducto(int.Parse(textBoxCodigo.Text)).Rows[0];
+
+                    ImporteRengon = int.Parse(textBoxCantidad.Text) * float.Parse(Renglon["PrecioUnitario"].ToString());
+
+                    dataGridView1.Rows.Add(textBoxCantidad.Text, textBoxCodigo.Text, Renglon["Descripcion"].ToString(), Renglon["PrecioUnitario"].ToString(), Renglon["CategoriaId"].ToString(), ImporteRengon);
 
                 }
                 catch (Exception ex)
@@ -138,8 +142,7 @@ namespace Ventas
 
                 //enviar renglon al datagrid
 
-                ImporteRengon = int.Parse(textBoxCantidad.Text) * float.Parse((string)Renglon.Rows[1][2]);
-                dataGridView1.Rows.Add(textBoxCantidad.Text, textBoxCodigo.Text, Renglon.Rows[1][1].ToString(), Renglon.Rows[1][2].ToString(), Renglon.Rows[1][3].ToString(), ImporteRengon);
+                //dataGridView1.Rows.Add(textBoxCantidad.Text, textBoxCodigo.Text, Renglon.Rows[1][1].ToString(), Renglon.Rows[1][2].ToString(), Renglon.Rows[1][3].ToString(), ImporteRengon);
 
                 BorrarTexto(textBoxCodigo);
                 BorrarTexto(textBoxCantidad);
@@ -279,6 +282,11 @@ namespace Ventas
             IVA = 0;
             total = 0;
             textBoxCaptura.Focus();
+        }
+
+        private void buttonBuscar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

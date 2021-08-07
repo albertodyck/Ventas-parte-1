@@ -10,13 +10,14 @@ namespace LogicaNegocios
 {
     public class Producto
     {
-        public int productoId { get; set; }
+        //propiedades llevan mayuscula al inicio
+        public int ProductoId { get; set; }
 
-        public string descripcion { get; set; }
+        public string Descripcion { get; set; }
 
-        public decimal precioUnitario { get; set; }
+        public decimal PrecioUnitario { get; set; }
 
-        public int categoriaId { get; set; }
+        public int CategoriaId { get; set; }
 
         private readonly IBaseDeDatos baseDeDatos;
 

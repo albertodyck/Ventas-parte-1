@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -130,5 +131,14 @@ namespace AccesoDatos
             }
         }
 
+        public object Scalar(SqlCommand sqlCommand, SqlTransaction sqlTransaction)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int NonQuery(SqlCommand sqlCommand, SqlTransaction sqlTransaction)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
