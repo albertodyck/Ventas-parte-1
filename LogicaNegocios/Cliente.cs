@@ -10,30 +10,38 @@ namespace LogicaNegocios
 {
     public class Cliente
     {
-        string connectionString;
+        //string connectionString;
 
-        public Cliente()
+        private readonly IBaseDeDatos baseDeDatos;
+
+        public Cliente(SeleccionBaseDeDatos.TipoBaseDeDatos tipoBaseDeDatos, string fuente)
         {
-            connectionString = "Server=localhost;Database=VENTAS_DB;Trusted_Connection=True;";
+            baseDeDatos = SeleccionBaseDeDatos.Seleccionar(tipoBaseDeDatos, fuente);
         }
+
 
         public DataTable ObtenerClientes()
         {
             try
             {
-                SQL sql = new SQL(connectionString);
-
-                string query = "SELECT * FROM [Clientes]";
+                string query = "";
+                if (baseDeDatos is SQL)
+                {
+                    query = "SELECT * FROM [Clientes]";
+                }
+                else
+                {
+                    query = "SELECT * FROM [Clientes$]";
+                }
 
                 DataTable dtRespuesta = new DataTable();
 
-                dtRespuesta = sql.ObtenerDataTable(query);
+                dtRespuesta = baseDeDatos.ObtenerDataTable(query);
 
                 return dtRespuesta;
             }
             catch (Exception ex)
             {
-
                 throw new Exception(ex.Message);
             }
         }
@@ -42,18 +50,23 @@ namespace LogicaNegocios
         {
             try
             {
-                SQL sql = new SQL(connectionString);
+                string query = "";
+                if (baseDeDatos is SQL)
+                {
+                    query = "SELECT COUNT(*) FROM [Clientes]";
+                }
+                else
+                {
+                    query = "SELECT COUNT(*) FROM [Clientes$]";
+                }
 
-                string query = "SELECT COUNT(*) FROM [Clientes]";
-
-                object resultado = sql.Scalar(query);
+                object resultado = baseDeDatos.Scalar(query);
 
                 return resultado;
 
             }
             catch (Exception ex)
             {
-
                 throw new Exception(ex.Message);
             }
         }
@@ -62,9 +75,8 @@ namespace LogicaNegocios
         {
             try
             {
-                SQL sql = new SQL(connectionString);
 
-                int resultado = sql.NonQuery(query);
+                int resultado = baseDeDatos.NonQuery(query);
 
                 return resultado;
 
@@ -76,6 +88,4 @@ namespace LogicaNegocios
             }
         }
     }
-
-   
 }

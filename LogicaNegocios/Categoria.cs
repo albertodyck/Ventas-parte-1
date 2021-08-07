@@ -8,35 +8,28 @@ using System.Threading.Tasks;
 
 namespace LogicaNegocios
 {
-    public class Producto
+    public class Categoria
     {
-        public int productoId { get; set; }
-
-        public string descripcion { get; set; }
-
-        public decimal precioUnitario { get; set; }
-
-        public int categoriaId { get; set; }
 
         private readonly IBaseDeDatos baseDeDatos;
 
-        public Producto(SeleccionBaseDeDatos.TipoBaseDeDatos tipoBaseDeDatos, string fuente)
+        public Categoria(SeleccionBaseDeDatos.TipoBaseDeDatos tipoBaseDeDatos, string fuente)
         {
             baseDeDatos = SeleccionBaseDeDatos.Seleccionar(tipoBaseDeDatos, fuente);
         }
 
-        public DataTable ObtenerProductos()
+        public DataTable ObtenerCategorias()
         {
             try
             {
                 string query = "";
                 if (baseDeDatos is SQL)
                 {
-                    query = "SELECT * FROM [Productos]";
+                    query = "SELECT * FROM [Categorias]";
                 }
                 else
                 {
-                    query = "SELECT * FROM [Productos$]";
+                    query = "SELECT * FROM [Categorias$]";
                 }
 
                 DataTable dtRespuesta = new DataTable();
@@ -58,11 +51,11 @@ namespace LogicaNegocios
                 string query = "";
                 if (baseDeDatos is SQL)
                 {
-                    query = "SELECT COUNT(*) FROM [Productos]";
+                    query = "SELECT COUNT(*) FROM [Categorias]";
                 }
                 else
                 {
-                    query = "SELECT COUNT(*) FROM [Productos$]";
+                    query = "SELECT COUNT(*) FROM [Categorias$]";
                 }
 
                 object resultado = baseDeDatos.Scalar(query);

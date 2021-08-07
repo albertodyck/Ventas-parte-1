@@ -31,6 +31,7 @@ namespace Ventas
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.labelBD = new System.Windows.Forms.Label();
             this.labelCajero = new System.Windows.Forms.Label();
             this.labelFechaHora = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -42,11 +43,12 @@ namespace Ventas
             this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Productos = new System.Windows.Forms.ToolStripMenuItem();
             this.categoriaDeProductosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.buttonProductosAdmin = new System.Windows.Forms.Button();
             this.buttonClientAdmin = new System.Windows.Forms.Button();
             this.buttonUserAdmin = new System.Windows.Forms.Button();
             this.buttonPuntoVenta = new System.Windows.Forms.Button();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.labelBD = new System.Windows.Forms.Label();
+            this.buttonAdminCategorias = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -60,6 +62,17 @@ namespace Ventas
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(427, 100);
             this.panel1.TabIndex = 16;
+            // 
+            // labelBD
+            // 
+            this.labelBD.AutoSize = true;
+            this.labelBD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelBD.ForeColor = System.Drawing.Color.Blue;
+            this.labelBD.Location = new System.Drawing.Point(3, 47);
+            this.labelBD.Name = "labelBD";
+            this.labelBD.Size = new System.Drawing.Size(163, 16);
+            this.labelBD.TabIndex = 11;
+            this.labelBD.Text = "Base de datos en uso:";
             // 
             // labelCajero
             // 
@@ -92,7 +105,7 @@ namespace Ventas
             this.administracionToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(458, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(646, 24);
             this.menuStrip1.TabIndex = 15;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -157,6 +170,27 @@ namespace Ventas
             this.categoriaDeProductosToolStripMenuItem.Text = "Categoria de Productos";
             this.categoriaDeProductosToolStripMenuItem.Click += new System.EventHandler(this.categoriaDeProductosToolStripMenuItem_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // buttonProductosAdmin
+            // 
+            this.buttonProductosAdmin.BackgroundImage = global::Ventas.Properties.Resources.iconfinder_040_95876;
+            this.buttonProductosAdmin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonProductosAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonProductosAdmin.ForeColor = System.Drawing.Color.Blue;
+            this.buttonProductosAdmin.Location = new System.Drawing.Point(479, 47);
+            this.buttonProductosAdmin.Name = "buttonProductosAdmin";
+            this.buttonProductosAdmin.Size = new System.Drawing.Size(110, 84);
+            this.buttonProductosAdmin.TabIndex = 20;
+            this.buttonProductosAdmin.Text = "Administracion de Productos";
+            this.buttonProductosAdmin.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonProductosAdmin.UseVisualStyleBackColor = true;
+            this.buttonProductosAdmin.Click += new System.EventHandler(this.buttonProductosAdmin_Click);
+            // 
             // buttonClientAdmin
             // 
             this.buttonClientAdmin.BackgroundImage = global::Ventas.Properties.Resources.iconfinder_040_95876;
@@ -202,28 +236,28 @@ namespace Ventas
             this.buttonPuntoVenta.UseVisualStyleBackColor = true;
             this.buttonPuntoVenta.Click += new System.EventHandler(this.buttonPuntoVenta_Click);
             // 
-            // timer1
+            // buttonAdminCategorias
             // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // labelBD
-            // 
-            this.labelBD.AutoSize = true;
-            this.labelBD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelBD.ForeColor = System.Drawing.Color.Blue;
-            this.labelBD.Location = new System.Drawing.Point(3, 47);
-            this.labelBD.Name = "labelBD";
-            this.labelBD.Size = new System.Drawing.Size(163, 16);
-            this.labelBD.TabIndex = 11;
-            this.labelBD.Text = "Base de datos en uso:";
+            this.buttonAdminCategorias.BackgroundImage = global::Ventas.Properties.Resources.iconfinder_040_95876;
+            this.buttonAdminCategorias.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonAdminCategorias.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAdminCategorias.ForeColor = System.Drawing.Color.Blue;
+            this.buttonAdminCategorias.Location = new System.Drawing.Point(479, 137);
+            this.buttonAdminCategorias.Name = "buttonAdminCategorias";
+            this.buttonAdminCategorias.Size = new System.Drawing.Size(110, 84);
+            this.buttonAdminCategorias.TabIndex = 21;
+            this.buttonAdminCategorias.Text = "Administracion de Categorias";
+            this.buttonAdminCategorias.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonAdminCategorias.UseVisualStyleBackColor = true;
+            this.buttonAdminCategorias.Click += new System.EventHandler(this.buttonAdminCategorias_Click);
             // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(458, 342);
+            this.ClientSize = new System.Drawing.Size(646, 342);
+            this.Controls.Add(this.buttonAdminCategorias);
+            this.Controls.Add(this.buttonProductosAdmin);
             this.Controls.Add(this.buttonClientAdmin);
             this.Controls.Add(this.buttonUserAdmin);
             this.Controls.Add(this.buttonPuntoVenta);
@@ -260,5 +294,7 @@ namespace Ventas
         private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem categoriaDeProductosToolStripMenuItem;
         private System.Windows.Forms.Label labelBD;
+        private System.Windows.Forms.Button buttonProductosAdmin;
+        private System.Windows.Forms.Button buttonAdminCategorias;
     }
 }

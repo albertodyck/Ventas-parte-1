@@ -52,6 +52,12 @@
     <Compile Include="ClientesAdmin.Designer.cs">
       <DependentUpon>ClientesAdmin.cs</DependentUpon>
     </Compile>
+    <Compile Include="CategoriasAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CategoriasAdmin.Designer.cs">
+      <DependentUpon>CategoriasAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,8 +71,17 @@
     <Compile Include="Menu.Designer.cs">
       <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProductosAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductosAdmin.Designer.cs">
+      <DependentUpon>ProductosAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CategoriasAdmin.resx">
+      <DependentUpon>CategoriasAdmin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ClientesAdmin.resx">
       <DependentUpon>ClientesAdmin.cs</DependentUpon>
     </EmbeddedResource>
@@ -75,6 +90,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductosAdmin.resx">
+      <DependentUpon>ProductosAdmin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

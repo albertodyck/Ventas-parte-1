@@ -8,19 +8,12 @@ using System.Threading.Tasks;
 
 namespace LogicaNegocios
 {
-    public class Producto
+    public class VentaConcepto
     {
-        public int productoId { get; set; }
-
-        public string descripcion { get; set; }
-
-        public decimal precioUnitario { get; set; }
-
-        public int categoriaId { get; set; }
 
         private readonly IBaseDeDatos baseDeDatos;
 
-        public Producto(SeleccionBaseDeDatos.TipoBaseDeDatos tipoBaseDeDatos, string fuente)
+        public VentaConcepto(SeleccionBaseDeDatos.TipoBaseDeDatos tipoBaseDeDatos, string fuente)
         {
             baseDeDatos = SeleccionBaseDeDatos.Seleccionar(tipoBaseDeDatos, fuente);
         }
@@ -32,11 +25,11 @@ namespace LogicaNegocios
                 string query = "";
                 if (baseDeDatos is SQL)
                 {
-                    query = "SELECT * FROM [Productos]";
+                    query = "SELECT * FROM [VentaConceptos]";
                 }
                 else
                 {
-                    query = "SELECT * FROM [Productos$]";
+                    query = "SELECT * FROM [VentaConceptos$]";
                 }
 
                 DataTable dtRespuesta = new DataTable();
@@ -58,11 +51,11 @@ namespace LogicaNegocios
                 string query = "";
                 if (baseDeDatos is SQL)
                 {
-                    query = "SELECT COUNT(*) FROM [Productos]";
+                    query = "SELECT COUNT(*) FROM [VentaConceptos]";
                 }
                 else
                 {
-                    query = "SELECT COUNT(*) FROM [Productos$]";
+                    query = "SELECT COUNT(*) FROM [VentaConceptos$]";
                 }
 
                 object resultado = baseDeDatos.Scalar(query);
@@ -92,6 +85,5 @@ namespace LogicaNegocios
                 throw new Exception(ex.Message);
             }
         }
-
     }
 }

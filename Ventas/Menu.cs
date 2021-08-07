@@ -55,7 +55,9 @@ namespace Ventas
 
         private void Productos_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            new ProductosAdmin().ShowDialog();
+            this.Show();
         }
 
         private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -67,13 +69,29 @@ namespace Ventas
 
         private void categoriaDeProductosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            new CategoriasAdmin().ShowDialog();
+            this.Show();
         }
 
         private void buttonClientAdmin_Click(object sender, EventArgs e)
         {
             this.Hide();
             new ClientesAdmin().ShowDialog();
+            this.Show();
+        }
+
+        private void buttonProductosAdmin_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new ProductosAdmin().ShowDialog();
+            this.Show();
+        }
+
+        private void buttonAdminCategorias_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new CategoriasAdmin().ShowDialog();
             this.Show();
         }
     }

@@ -1,5 +1,4 @@
-﻿using LogicaNegocios;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,33 +7,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LogicaNegocios;
 
 namespace Ventas
 {
-    public partial class ClientesAdmin : Form
+    public partial class CategoriasAdmin : Form
     {
-        private Cliente cliente;
-        public ClientesAdmin()
+        public CategoriasAdmin()
         {
-            cliente = new Cliente(Global.TipoBaseDeDatos, Global.FuenteDeDatos);
+            Categoria categoria = new Categoria(Global.TipoBaseDeDatos, Global.FuenteDeDatos);  
 
             InitializeComponent();
 
             txtId.ReadOnly = true;
+
         }
 
         private void btnObtenerDatos_Click(object sender, EventArgs e)
         {
             try
             {
-                Cliente cliente = new Cliente(Global.TipoBaseDeDatos, Global.FuenteDeDatos);
+                Categoria categoria = new Categoria(Global.TipoBaseDeDatos, Global.FuenteDeDatos);
 
-                dgvDatos.DataSource = cliente.ObtenerClientes();
-
+                dgvDatos.DataSource = categoria.ObtenerCategorias();
             }
             catch (Exception ex)
             {
-
                 throw new Exception(ex.Message);
             }
         }
@@ -44,28 +42,33 @@ namespace Ventas
             try
             {
                 int afectados = 0;
+                Categoria categoria = new Categoria(Global.TipoBaseDeDatos, Global.FuenteDeDatos);
 
-                Cliente cliente = new Cliente(Global.TipoBaseDeDatos, Global.FuenteDeDatos);
-
-                if (string.IsNullOrWhiteSpace(txtCliente.Text))
+                if (string.IsNullOrWhiteSpace(txtCategoria.Text))
                 {
-                    txtCliente.Focus();
-                    MessageBox.Show("El nombre del cliente es requerido");
+                    txtCategoria.Focus();
+                    MessageBox.Show("El nombre de la categoria es requerido");
                 }
 
-                int.TryParse(cliente.Scalar().ToString(), out int CuentaContactos);
+                if (string.IsNullOrWhiteSpace(txtDescripcion.Text))
+                {
+                    txtDescripcion.Focus();
+                    MessageBox.Show("La descripcion de la categoria no debe estar vacia");
+                }
+
+                int.TryParse(categoria.Scalar().ToString(), out int CuentaContactos);
 
                 if (Global.TipoBaseDeDatos.ToString() == "SQL")
                 {
-                    afectados = cliente.NonQuery($"INSERT INTO [Clientes] " +
-                    $"(Nombre) VALUES " +
-                    $"('{txtCliente.Text}'");
+                    afectados = categoria.NonQuery($"INSERT INTO [Categorias] " +
+                    $"(Categoria, Descripcion) VALUES " +
+                    $"('{txtCategoria.Text}', '{txtDescripcion.Text}')");
                 }
                 else
                 {
-                    afectados = cliente.NonQuery($"INSERT INTO [Clientes$] " +
-                    $"(Id, Nombre) VALUES " +
-                    $"('{CuentaContactos + 1}', '{txtCliente.Text}')");
+                    afectados = categoria.NonQuery($"INSERT INTO [Categorias$] " +
+                    $"(Id, Categoria, Descripcion) VALUES " +
+                    $"('{CuentaContactos + 1}', '{txtCategoria.Text}', '{txtDescripcion.Text}')");
                 }
 
                 foreach (var control in this.Controls)
@@ -79,6 +82,7 @@ namespace Ventas
                 btnObtenerDatos.PerformClick();
 
                 lblContactos.Text += $"   '{afectados}' registros afectados";
+
             }
             catch (Exception ex)
             {
@@ -86,7 +90,7 @@ namespace Ventas
             }
         }
 
-        private void dgvDatos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvDatos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
@@ -97,47 +101,49 @@ namespace Ventas
                 }
 
                 txtId.Text = dgvDatos.Rows[renglon].Cells["Id"].Value.ToString();
-                txtCliente.Text = dgvDatos.Rows[renglon].Cells["Nombre"].Value.ToString();
+                txtCategoria.Text = dgvDatos.Rows[renglon].Cells["Categoria"].Value.ToString();
+                txtDescripcion.Text = dgvDatos.Rows[renglon].Cells["Descripcion"].Value.ToString();
+
             }
             catch (Exception ex)
             {
-
                 throw new Exception(ex.Message);
             }
         }
-
-
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             try
             {
                 int afectados = 0;
+                Categoria categoria = new Categoria(Global.TipoBaseDeDatos, Global.FuenteDeDatos);
 
-                Cliente cliente = new Cliente(Global.TipoBaseDeDatos, Global.FuenteDeDatos);
-
-                if (string.IsNullOrWhiteSpace(txtId.Text))
+                if (string.IsNullOrWhiteSpace(txtCategoria.Text))
                 {
-                    throw new Exception("El Id es requerido");
+                    txtCategoria.Focus();
+                    MessageBox.Show("El nombre de la categoria es requerido");
                 }
 
-                if (string.IsNullOrWhiteSpace(txtCliente.Text))
+                if (string.IsNullOrWhiteSpace(txtDescripcion.Text))
                 {
-                    throw new Exception("El Nombre del cliente es requerido");
+                    txtDescripcion.Focus();
+                    MessageBox.Show("La descripcion de la categoria no debe estar vacia");
                 }
 
                 if (Global.TipoBaseDeDatos.ToString() == "SQL")
                 {
-                    afectados = cliente.NonQuery($"UPDATE [Clientes] " +
+                    afectados = categoria.NonQuery($"UPDATE [Categorias] " +
                     $" SET " +
-                    $"Nombre = '{txtCliente.Text}' " +
+                    $"Categoria = '{txtCategoria.Text}', " +
+                    $"Descripcion = '{txtDescripcion.Text}' " + 
                     $"WHERE Id = {txtId.Text}");
                 }
                 else
                 {
-                    afectados = cliente.NonQuery($"UPDATE [Clientes$] " +
+                    afectados = categoria.NonQuery($"UPDATE [Categorias$] " +
                     $" SET " +
-                    $"Nombre = '{txtCliente.Text}' " +
+                    $"Categoria = '{txtCategoria.Text}', " +
+                    $"Descripcion = '{txtDescripcion.Text}' " +
                     $"WHERE Id = {txtId.Text}");
                 }
 
@@ -156,7 +162,6 @@ namespace Ventas
             }
             catch (Exception ex)
             {
-
                 throw new Exception(ex.Message);
             }
         }
@@ -166,8 +171,7 @@ namespace Ventas
             try
             {
                 int afectados = 0;
-
-                Cliente cliente = new Cliente(Global.TipoBaseDeDatos, Global.FuenteDeDatos);
+                Categoria categoria = new Categoria(Global.TipoBaseDeDatos, Global.FuenteDeDatos);
 
                 if (string.IsNullOrWhiteSpace(txtId.Text))
                 {
@@ -176,12 +180,12 @@ namespace Ventas
 
                 if (Global.TipoBaseDeDatos.ToString() == "SQL")
                 {
-                    afectados = cliente.NonQuery($"DELETE FROM [Cliente] " +
+                    afectados = categoria.NonQuery($"DELETE FROM [Categorias] " +
                     $"WHERE Id = {txtId.Text}");
                 }
                 else
                 {
-                    afectados = cliente.NonQuery($"DELETE FROM [Cliente$] " +
+                    afectados = categoria.NonQuery($"DELETE FROM [Categorias$] " +
                     $"WHERE Id = {txtId.Text}");
                 }
 
@@ -196,27 +200,6 @@ namespace Ventas
                 btnObtenerDatos.PerformClick();
 
                 lblContactos.Text += $"   '{afectados}' registros afectados";
-            }
-            catch (Exception ex)
-            {
-
-                throw new Exception(ex.Message);
-            }
-
-        }
-
-        private void dgvDatos_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                int renglon = e.RowIndex;
-                if (renglon < 0)
-                {
-                    throw new Exception("No hay registros");
-                }
-
-                txtId.Text = dgvDatos.Rows[renglon].Cells["Id"].Value.ToString();
-                txtCliente.Text = dgvDatos.Rows[renglon].Cells["Nombre"].Value.ToString();
             }
             catch (Exception ex)
             {

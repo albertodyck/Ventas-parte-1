@@ -8,19 +8,12 @@ using System.Threading.Tasks;
 
 namespace LogicaNegocios
 {
-    public class Producto
+    public class Venta
     {
-        public int productoId { get; set; }
-
-        public string descripcion { get; set; }
-
-        public decimal precioUnitario { get; set; }
-
-        public int categoriaId { get; set; }
 
         private readonly IBaseDeDatos baseDeDatos;
 
-        public Producto(SeleccionBaseDeDatos.TipoBaseDeDatos tipoBaseDeDatos, string fuente)
+        public Venta(SeleccionBaseDeDatos.TipoBaseDeDatos tipoBaseDeDatos, string fuente)
         {
             baseDeDatos = SeleccionBaseDeDatos.Seleccionar(tipoBaseDeDatos, fuente);
         }
@@ -32,11 +25,11 @@ namespace LogicaNegocios
                 string query = "";
                 if (baseDeDatos is SQL)
                 {
-                    query = "SELECT * FROM [Productos]";
+                    query = "SELECT * FROM [Ventas]";
                 }
                 else
                 {
-                    query = "SELECT * FROM [Productos$]";
+                    query = "SELECT * FROM [Ventas$]";
                 }
 
                 DataTable dtRespuesta = new DataTable();
@@ -58,11 +51,11 @@ namespace LogicaNegocios
                 string query = "";
                 if (baseDeDatos is SQL)
                 {
-                    query = "SELECT COUNT(*) FROM [Productos]";
+                    query = "SELECT COUNT(*) FROM [Ventas]";
                 }
                 else
                 {
-                    query = "SELECT COUNT(*) FROM [Productos$]";
+                    query = "SELECT COUNT(*) FROM [Ventas$]";
                 }
 
                 object resultado = baseDeDatos.Scalar(query);
@@ -80,7 +73,6 @@ namespace LogicaNegocios
         {
             try
             {
-
                 int resultado = baseDeDatos.NonQuery(query);
 
                 return resultado;
@@ -88,10 +80,8 @@ namespace LogicaNegocios
             }
             catch (Exception ex)
             {
-
                 throw new Exception(ex.Message);
             }
         }
-
     }
 }
