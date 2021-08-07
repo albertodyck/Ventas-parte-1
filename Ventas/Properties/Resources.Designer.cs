@@ -103,9 +103,59 @@ namespace Ventas.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_free_27_616650__2_ {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_free-27_616650 (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_minus_1645995__1_ {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_minus_1645995 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_payment_1954199 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_payment_1954199", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap iconfinder_revisi_02_2191544 {
             get {
                 object obj = ResourceManager.GetObject("iconfinder_revisi_02_2191544", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_Save_1493294 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_Save_1493294", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_search_magnifying_glass_find_103857 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_search_magnifying_glass_find_103857", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

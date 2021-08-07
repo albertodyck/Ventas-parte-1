@@ -35,7 +35,9 @@ namespace Ventas
 
         private void buttonPuntoVenta_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            new Ventas().ShowDialog();
+            this.Show();
         }
 
         private void buttonUserAdmin_Click(object sender, EventArgs e)
@@ -45,7 +47,9 @@ namespace Ventas
 
         private void ejecutarPuntoDeVentaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            new Ventas().ShowDialog();
+            this.Show();
         }
 
         private void moduloDeAdministracionDeUsuariosToolStripMenuItem_Click(object sender, EventArgs e)

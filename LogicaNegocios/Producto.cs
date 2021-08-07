@@ -51,6 +51,34 @@ namespace LogicaNegocios
             }
         }
 
+        public DataTable ObtenerProducto(int id)
+        {
+            try
+            {
+                string query = "";
+                if (baseDeDatos is SQL)
+                {
+                    query = $"SELECT * FROM [Productos] WHERE Id={id}";
+                }
+                else
+                {
+                    query = $"SELECT * FROM [Productos$] WHERE Id={id}";
+                }
+
+                DataTable dtRespuesta = new DataTable();
+
+                dtRespuesta = baseDeDatos.ObtenerDataTable(query);
+
+                return dtRespuesta;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+            
+        }
+
         public object Scalar()
         {
             try
